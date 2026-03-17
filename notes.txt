@@ -1,0 +1,43 @@
+User must be able to enter a domain name (e.g. example).
+The application must check at least 10 different TLDs (extensions).
+The application must use the provided REST API.
+Must include the Authorization header:
+Request body must contain a JSON list of domains to check.
+
+The webpage must show:
+- Domain name
+- Availability status
+- Price
+
+If status = free → domain can be added to cart.
+If status ≠ free → domain cannot be added to cart.
+
+You must implement a cart system where users can:
+- Add available domains to cart
+- Remove domains from cart
+- View domains currently in the cart
+
+The checkout page must display:
+- Subtotal
+- VAT (BTW)
+- Total price
+
+You must store orders in a database.
+
+Requirements:
+- Use a database you set up yourself
+- Preferably MySQL
+
+The database must store:
+- Order subtotal
+- VAT amount
+- Total price
+- Domains in the order
+
+When the user completes checkout:
+A new order must be saved in the database.
+
+Each order should display:
+- Subtotal
+- VAT
+- Total

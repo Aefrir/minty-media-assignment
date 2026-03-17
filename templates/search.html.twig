@@ -1,0 +1,8 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    <form method="post">
+        <label for="search">Search available domains:</label>
+        <input type="text" id="search" name="name" required>
+        <input type="submit" name="submitSearch" value="Submit">
+    </form>
+{% endblock %}
