@@ -1,10 +1,12 @@
 <?php
     class Controller{
         private DomainModel $domainModel;
+        private CartModel $cartModel;
         private $twig;
 
-        public function __construct(DomainModel $domainModel, $twig){
+        public function __construct(DomainModel $domainModel, CartModel $cartModel, $twig){
             $this->domainModel = $domainModel;
+            $this->cartModel = $cartModel;
             $this->twig = $twig;
         }
 
@@ -21,13 +23,17 @@
             return $output;
         }
 
-        public function searchPage(array $results = []){
+        public function searchPage(string $domainName = '', array $results = []){
             echo $this->twig->render('search.html.twig', [
-                'results' => $results
+                'results' => $results,
+                'name' => $domainName
             ]);
         }
         public function cartPage(){
-            echo $this->twig->render('cart.html.twig', []);
+            $cartItems = $this->cartModel->getCartItems();
+            echo $this->twig->render('cart.html.twig', [
+                'items' => $cartItems
+            ]);
         }
         public function checkOutPage(){
             echo $this->twig->render('checkout.html.twig', []);

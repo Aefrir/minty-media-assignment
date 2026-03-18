@@ -3,7 +3,7 @@
     <section>
         <form method="post" class="search-form">
             <label for="search">Search available domains:</label>
-            <input type="text" id="search" name="name" required>
+            <input type="text" id="search" name="name" value="{{ name }}"required>
             <input type="submit" name="submitSearch" value="Submit">
         </form>
     </section>
@@ -12,7 +12,16 @@
         {% for result in results %}
             <article class="domains">
                 <p>{{result.domain}} - {{result.status}} - {{ result.price.product.price }} {{ result.price.product.currency }}</p>
-                <button type="submit" name="add-to-cart">Add to cart</button>
+                {% if result.status == 'free' %}
+                    <form method="post">
+                        <input type="hidden" value="{{result.domain}}" name="domain-name">
+                        <input type="hidden" value="{{result.status}}" name="domain-status">
+                        <input type="hidden" value="{{ result.price.product.price }}" name="domain-price">
+                        <input type="hidden" value="{{ result.price.product.currency }}" name="domain-currency-type">
+                        <input type="hidden" value="{{ name }}" name="search-term">
+                        <button type="submit" name="add-to-cart">Add to cart</button>
+                    </form>
+                {% endif %}
             </article>
         {% endfor %}
     </section>

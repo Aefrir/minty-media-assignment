@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+hr{
+    margin: 1em 0 1em;
+}
+
 body{
     margin-left: 1em;
     margin-right: 1em;
@@ -13,21 +17,19 @@ nav>ul{
     flex-direction: row;
     list-style-type: none;
     gap: 1em;
-    margin: 1em 0 1em;
+    margin-top: 1em;
 }
 
 .search-form{
     display: flex;
     flex-direction: row;
     gap: 1em;
-    margin: 1em 0 1em;
 }
 
 .domain-list{
     display: flex;
     flex-direction: column;
     gap: 1em;
-    margin: 1em 0 1em;
 }
 
 .domains{
@@ -35,5 +37,12 @@ nav>ul{
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
-    max-width: 15vw;
+    max-width: 25vw;
+}
+
+table, th, td{
+    border: solid 1px black;
+    padding: 0.5em;
+    border-collapse: collapse;
+    margin: 1em 0 1em;
 }

@@ -5,21 +5,39 @@
 	$twig = new \Twig\Environment($loader, []);
 
     $domainModel = new DomainModel();
-    $controller = new Controller($domainModel, $twig);
+    $cartModel = new CartModel();
+    $controller = new Controller($domainModel, $cartModel, $twig);
 
 
-    if(!isset($_SESSION['shoppingCart'])){
-        $_SESSION['shoppingCart'] = [];
-    }
+    
 
     if(isset($_POST['submitSearch'])){
-        $domainName = $_POST['name'];
-        $output = $controller->createDomainArray($domainName);
-        $controller->searchPage($output);
+        $searchTerm = $_POST['name'];
+        $output = $controller->createDomainArray($searchTerm);
+        $controller->searchPage($searchTerm, $output);
         exit;
     }
     elseif(isset($_POST['add-to-cart'])){
+        $searchTerm = $_POST['search-term'];
+        $domain = [];
+        $name = $_POST['domain-name'];
+        $status = $_POST['domain-status'];
+        $price = $_POST['domain-price'];
+        $currencyType = $_POST['domain-currency-type'];
 
+        $domain['name'] = $name;
+        $domain['status'] = $status;
+        $domain['price'] = $price;
+        $domain['currencyType'] = $currencyType;
+
+        $cartModel->addToCart($domain);
+        $controller->searchPage($searchTerm);
+        exit;
+    }
+    elseif(isset($_POST['empty-cart'])){
+        $cartModel->emptyCart();
+        header('Location: ./cart');
+        exit;
     }
 
     $page = $_GET['page'] ?? 'search';

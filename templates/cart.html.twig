@@ -1,0 +1,23 @@
+{# Child template "cart.html.twig" #}
+{% extends "base.html.twig" %}
+{% block content %}
+    {% if items is empty %}
+        <p>There are currently no items in your cart.</p>
+    {% else %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form method="post">
+            <button type="submit" name="empty-cart">Empty cart</button>
+        </form>
+    {% endif %}
+{% endblock %}
