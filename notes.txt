@@ -1,21 +1,21 @@
-User must be able to enter a domain name (e.g. example).
-The application must check at least 10 different TLDs (extensions).
-The application must use the provided REST API.
-Must include the Authorization header:
-Request body must contain a JSON list of domains to check.
+User must be able to enter a domain name (e.g. example). DONE
+The application must check at least 10 different TLDs (extensions). DONE 
+The application must use the provided REST API. DONE
+Must include the Authorization header: DONE
+Request body must contain a JSON list of domains to check. DONE
 
-The webpage must show:
-- Domain name
+The webpage must show: DONE
+- Domain name 
 - Availability status
 - Price
 
-If status = free → domain can be added to cart.
-If status ≠ free → domain cannot be added to cart.
+If status = free → domain can be added to cart. DONE
+If status ≠ free → domain cannot be added to cart. DONE
 
 You must implement a cart system where users can:
-- Add available domains to cart
+- Add available domains to cart DONE
 - Remove domains from cart
-- View domains currently in the cart
+- View domains currently in the cart DONE
 
 The checkout page must display:
 - Subtotal

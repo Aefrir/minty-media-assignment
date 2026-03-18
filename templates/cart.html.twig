@@ -13,6 +13,11 @@
             <tr>
                 <td>{{item.name}}</td>
                 <td>{{item.price}}</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" name="delete-item">Delete</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </table>

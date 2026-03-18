@@ -39,6 +39,9 @@
         header('Location: ./cart');
         exit;
     }
+    elseif(isset($_POST['delete-item'])){
+        exit;
+    }
 
     $page = $_GET['page'] ?? 'search';
 	$routes = [
