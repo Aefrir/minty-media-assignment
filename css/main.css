@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+nav>ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 1em;
+    margin: 1em 0 1em;
+}
+
+.search-form{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin: 1em 0 1em;
+}
+
+.domain-list{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1em 0 1em;
+}
+
+.domains{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+    max-width: 15vw;
+}

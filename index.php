@@ -7,25 +7,33 @@
     $domainModel = new DomainModel();
     $controller = new Controller($domainModel, $twig);
 
-    $page = $_GET['page'] ?? 'search';
-    switch ($page){
-        case 'cart':
-            $page = $controller->cartPage();
-            break;
-        case 'checkout':
-            $page = $controller->checkOutPage();
-            break;
-        default:
-            $page = $controller->searchPage();
+
+    if(!isset($_SESSION['shoppingCart'])){
+        $_SESSION['shoppingCart'] = [];
     }
 
     if(isset($_POST['submitSearch'])){
         $domainName = $_POST['name'];
-        
-        $output = $controller->searchAvailableDomains($domainName);
+        $output = $controller->createDomainArray($domainName);
         $controller->searchPage($output);
-        echo '<pre>';
-        print_r($output);
-        echo '</pre>';
+        exit;
     }
+    elseif(isset($_POST['add-to-cart'])){
+
+    }
+
+    $page = $_GET['page'] ?? 'search';
+	$routes = [
+		'search' => [$controller, 'searchPage'],
+		'cart' => [$controller, 'cartPage'],
+		'checkout' => [$controller, 'checkOutPage'],
+	];
+
+	if(isset($routes[$page])){
+		[$controllerObj, $method] = $routes[$page];
+        $controllerObj->$method();
+		exit;
+	}
+
+    
 ?>

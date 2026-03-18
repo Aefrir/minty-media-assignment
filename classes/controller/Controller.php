@@ -8,7 +8,7 @@
             $this->twig = $twig;
         }
 
-        public function searchAvailableDomains(string $name): array{
+        public function createDomainArray(string $name): array{
             $tlds = ['com', 'nl', 'org', 'net', 'int', 'edu', 'gov', 'mil', 'arpa', 'cn'];
             $domains = [];
             foreach($tlds as $tld){
