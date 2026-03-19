@@ -22,13 +22,6 @@ The checkout page must display:
 - VAT (BTW) DONE 
 - Total price DONE
 
-----------------------------------------------------------------------
-
-You must store orders in a database.
-
-Requirements:
-- Use a database you set up yourself
-- Preferably MySQL
 
 The database must store the order which includes:
 - Order subtotal
@@ -38,3 +31,6 @@ The database must store the order which includes:
 
 When the user completes checkout:
 A new order must be saved in the database.
+Empty session after checkout
+
+Order list that contains all the bought domains and the total price attached to the order_id

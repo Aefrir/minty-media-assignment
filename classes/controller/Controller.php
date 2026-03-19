@@ -2,11 +2,13 @@
     class Controller{
         private DomainModel $domainModel;
         private CartModel $cartModel;
+        private OrderModel $orderModel;
         private $twig;
 
-        public function __construct(DomainModel $domainModel, CartModel $cartModel, $twig){
+        public function __construct(DomainModel $domainModel, CartModel $cartModel, OrderModel $orderModel, $twig){
             $this->domainModel = $domainModel;
             $this->cartModel = $cartModel;
+            $this->orderModel = $orderModel;
             $this->twig = $twig;
         }
 
@@ -31,20 +33,30 @@
         }
         public function cartPage(){
             $cartItems = $this->cartModel->getCartItems();
+            $subtotal = array_sum(array_column($cartItems, 'price'));
             echo $this->twig->render('cart.html.twig', [
-                'items' => $cartItems
+                'items' => $cartItems,
+                'subtotal' => $subtotal
             ]);
         }
         public function checkOutPage(){
             $cartItems = $this->cartModel->getCartItems();
+            $subtotal = array_sum(array_column($cartItems, 'price'));
+            $total = $subtotal * 1.21;
+            $VAT = $total - $subtotal;
             echo $this->twig->render('checkout.html.twig', [
-                'items' => $cartItems
+                'items' => $cartItems,
+                'subtotal' => $subtotal,
+                'vat' => $VAT,
+                'total' => $total
             ]);
         }
         public function ordersPage(){
-            $cartItems = $this->cartModel->getCartItems();
+            $orders = $this->orderModel->fetchOrders();
+            $items = $this->orderModel->fetchItems();
             echo $this->twig->render('orders.html.twig', [
-                'items' => $cartItems
+                'orders' => $orders,
+                'items' => $items
             ]);
         }
     }

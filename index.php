@@ -6,7 +6,9 @@
 
     $domainModel = new DomainModel();
     $cartModel = new CartModel();
-    $controller = new Controller($domainModel, $cartModel, $twig);
+    $orderModel = new OrderModel();
+    $controller = new Controller($domainModel, $cartModel, $orderModel, $twig);
+    
 
     if(isset($_POST['submitSearch'])){
         $searchTerm = $_POST['name'];
@@ -42,6 +44,16 @@
         header('Location: ./cart');
         exit;
     }
+    elseif(isset($_POST['checkout'])){
+        $cartItems = $cartModel->getCartItems();
+        $subtotal = $_POST['subtotal'];
+        $vat = $_POST['vat'];
+        $total = $_POST['total'];
+        $orderModel->createOrder($cartItems, $subtotal, $vat, $total);
+        $cartModel->emptyCart();
+        header('Location: ./orders');
+        exit;
+    }
 
     $page = $_GET['page'] ?? 'search';
 	$routes = [
@@ -56,6 +68,6 @@
         $controllerObj->$method();
 		exit;
 	}
-
+    
     
 ?>

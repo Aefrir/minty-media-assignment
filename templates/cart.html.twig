@@ -9,9 +9,7 @@
                 <th>Name</th>
                 <th>Price</th>
             </tr>
-            {% set beforeTax = 0 %}
             {% for item in items %}
-            {% set beforeTax = beforeTax + item.price %}
             <tr>
                 <td>{{item.name}}</td>
                 <td class="price">€{{item.price|number_format(2, '.' , ',')}}</td>
@@ -25,7 +23,7 @@
             {% endfor %}
             <tr class="seperator">
                 <td>Total before VAT</td>
-                <td class="total">€{{beforeTax|number_format(2, '.' , ',')}}</td>
+                <td class="total">€{{subtotal|number_format(2, '.' , ',')}}</td>
             </tr>
         </table>
         <form method="post">

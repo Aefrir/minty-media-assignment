@@ -4,38 +4,37 @@
     {% if items is empty %}
         <p>There are currently no items in your cart.</p>
     {% else %}
+    <form method="post">
         <table>
             <tr>
                 <th>Name</th>
                 <th>Price</th>
             </tr>
-            {% set beforeTax = 0 %}
-            {% set tax = 0 %}
-            {% set afterTax = 0 %}
             {% for item in items %}
-            {% set beforeTax = beforeTax + item.price %}
-            {% set afterTax = beforeTax * 1.21 %}
-            {% set tax = afterTax - beforeTax %}
             <tr>
                 <td>{{item.name}}</td>
+                <input type="hidden" value="{{item.name}}" name="domain-names[]">
                 <td class="price">€{{item.price|number_format(2, '.' , ',')}}</td>
+                <input type="hidden" value="{{item.price}}" name="domain-prices[]">
             </tr>
             {% endfor %}
             <tr class="seperator">
                 <td>Total before VAT</td>
-                <td class="total">€{{beforeTax|number_format(2, '.' , ',')}}</td>
+                <td class="total">€{{subtotal|number_format(2, '.' , ',')}}</td>
             </tr>
             <tr>
                 <td>VAT</td>
-                <td class="total">€{{tax|number_format(2, '.' , ',')}}</td>
+                <td class="total">€{{vat|number_format(2, '.' , ',')}}</td>
             </tr>
             <tr>
                 <td>Total incl. VAT</td>
-                <td class="total">€{{(afterTax)|number_format(2, '.' , ',')}}</td>
+                <td class="total">€{{(total)|number_format(2, '.' , ',')}}</td>
             </tr>
         </table>
-        <form method="post">
-            <button type="submit" name="checkout">Checkout</button>
-        </form>
+        <input type="hidden" value="{{subtotal}}" name="subtotal">
+        <input type="hidden" value="{{vat}}" name="vat">
+        <input type="hidden" value="{{total}}" name="total">
+        <button type="submit" name="checkout">Checkout</button>
+    </form>
     {% endif %}
 {% endblock %}
