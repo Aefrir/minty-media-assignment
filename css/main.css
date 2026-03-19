@@ -23,6 +23,7 @@ nav>ul{
 .search-form{
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 1em;
 }
 
@@ -45,4 +46,28 @@ table, th, td{
     padding: 0.5em;
     border-collapse: collapse;
     margin: 1em 0 1em;
+}
+
+.price{
+    text-align: right;
+}
+
+.total{
+    text-align: right;
+}
+
+.seperator{
+    border-top: solid black 5px;
+}
+
+.in-use{
+    color: red;
+}
+
+a, button{
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: rgb(202, 202, 202);
+    padding: 0.5em;
+    cursor: pointer;
 }

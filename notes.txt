@@ -5,22 +5,24 @@ Must include the Authorization header: DONE
 Request body must contain a JSON list of domains to check. DONE
 
 The webpage must show: DONE
-- Domain name 
-- Availability status
-- Price
+- Domain name DONE
+- Availability status DONE
+- Price DONE
 
 If status = free → domain can be added to cart. DONE
 If status ≠ free → domain cannot be added to cart. DONE
 
 You must implement a cart system where users can:
 - Add available domains to cart DONE
-- Remove domains from cart
+- Remove domains from cart DONE
 - View domains currently in the cart DONE
 
 The checkout page must display:
-- Subtotal
-- VAT (BTW)
-- Total price
+- Subtotal DONE
+- VAT (BTW) DONE 
+- Total price DONE
+
+----------------------------------------------------------------------
 
 You must store orders in a database.
 
@@ -28,16 +30,11 @@ Requirements:
 - Use a database you set up yourself
 - Preferably MySQL
 
-The database must store:
+The database must store the order which includes:
 - Order subtotal
 - VAT amount
 - Total price
-- Domains in the order
+- Domain
 
 When the user completes checkout:
 A new order must be saved in the database.
-
-Each order should display:
-- Subtotal
-- VAT
-- Total

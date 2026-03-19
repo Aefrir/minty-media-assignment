@@ -4,7 +4,7 @@
         <form method="post" class="search-form">
             <label for="search">Search available domains:</label>
             <input type="text" id="search" name="name" value="{{ name }}"required>
-            <input type="submit" name="submitSearch" value="Submit">
+            <button type="submit" name="submitSearch" value="Submit">Submit</button>
         </form>
     </section>
     <hr>
@@ -21,6 +21,8 @@
                         <input type="hidden" value="{{ name }}" name="search-term">
                         <button type="submit" name="add-to-cart">Add to cart</button>
                     </form>
+                {% else %}
+                    <span class="in-use">Domain is in use</span>
                 {% endif %}
             </article>
         {% endfor %}

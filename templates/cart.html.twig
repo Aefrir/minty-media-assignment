@@ -9,20 +9,28 @@
                 <th>Name</th>
                 <th>Price</th>
             </tr>
+            {% set beforeTax = 0 %}
             {% for item in items %}
+            {% set beforeTax = beforeTax + item.price %}
             <tr>
                 <td>{{item.name}}</td>
-                <td>{{item.price}}</td>
+                <td class="price">€{{item.price|number_format(2, '.' , ',')}}</td>
                 <td>
                     <form method="post">
+                        <input type="hidden" value="{{item.name}}" name="cart-item">
                         <button type="submit" name="delete-item">Delete</button>
                     </form>
                 </td>
             </tr>
             {% endfor %}
+            <tr class="seperator">
+                <td>Total before VAT</td>
+                <td class="total">€{{beforeTax|number_format(2, '.' , ',')}}</td>
+            </tr>
         </table>
         <form method="post">
             <button type="submit" name="empty-cart">Empty cart</button>
+            <a href="checkout">Proceed to checkout</a>
         </form>
     {% endif %}
 {% endblock %}

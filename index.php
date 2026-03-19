@@ -8,9 +8,6 @@
     $cartModel = new CartModel();
     $controller = new Controller($domainModel, $cartModel, $twig);
 
-
-    
-
     if(isset($_POST['submitSearch'])){
         $searchTerm = $_POST['name'];
         $output = $controller->createDomainArray($searchTerm);
@@ -40,6 +37,9 @@
         exit;
     }
     elseif(isset($_POST['delete-item'])){
+        $domainName = $_POST['cart-item'];
+        $cartModel->removeFromCart($domainName);
+        header('Location: ./cart');
         exit;
     }
 
@@ -48,6 +48,7 @@
 		'search' => [$controller, 'searchPage'],
 		'cart' => [$controller, 'cartPage'],
 		'checkout' => [$controller, 'checkOutPage'],
+        'orders' => [$controller, 'ordersPage']
 	];
 
 	if(isset($routes[$page])){

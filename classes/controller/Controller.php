@@ -36,7 +36,16 @@
             ]);
         }
         public function checkOutPage(){
-            echo $this->twig->render('checkout.html.twig', []);
+            $cartItems = $this->cartModel->getCartItems();
+            echo $this->twig->render('checkout.html.twig', [
+                'items' => $cartItems
+            ]);
+        }
+        public function ordersPage(){
+            $cartItems = $this->cartModel->getCartItems();
+            echo $this->twig->render('orders.html.twig', [
+                'items' => $cartItems
+            ]);
         }
     }
 ?>
