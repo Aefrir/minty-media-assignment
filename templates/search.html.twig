@@ -19,14 +19,14 @@
             </tr>
         {% for result in results %}
             <tr class="domains">
-                <td>{{result.domain}}</td>
-                <td>{{result.status}}</td>
+                <td>{{ result.domain }}</td>
+                <td>{{ result.status }}</td>
                 <td>€{{ result.price.product.price }}</td>
                 <td>{{ result.price.product.currency }}</td>
                 {% if result.status == 'free' %}
                     <form method="post">
-                        <input type="hidden" value="{{result.domain}}" name="domain-name">
-                        <input type="hidden" value="{{result.status}}" name="domain-status">
+                        <input type="hidden" value="{{ result.domain }}" name="domain-name">
+                        <input type="hidden" value="{{ result.status }}" name="domain-status">
                         <input type="hidden" value="{{ result.price.product.price }}" name="domain-price">
                         <input type="hidden" value="{{ result.price.product.currency }}" name="domain-currency-type">
                         <input type="hidden" value="{{ name }}" name="search-term">

@@ -18,19 +18,20 @@
     }
     elseif(isset($_POST['add-to-cart'])){
         $searchTerm = $_POST['search-term'];
-        $domain = [];
         $name = $_POST['domain-name'];
         $status = $_POST['domain-status'];
         $price = $_POST['domain-price'];
         $currencyType = $_POST['domain-currency-type'];
-
+        
+        $domain = [];
         $domain['name'] = $name;
         $domain['status'] = $status;
         $domain['price'] = $price;
         $domain['currencyType'] = $currencyType;
 
         $cartModel->addToCart($domain);
-        $controller->searchPage($searchTerm);
+        $output = $controller->createDomainArray($searchTerm);
+        $controller->searchPage($searchTerm, $output);
         exit;
     }
     elseif(isset($_POST['empty-cart'])){
@@ -68,6 +69,4 @@
         $controllerObj->$method();
 		exit;
 	}
-    
-    
 ?>
