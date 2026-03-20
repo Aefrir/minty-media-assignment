@@ -27,33 +27,11 @@ nav>ul{
     gap: 1em;
 }
 
-.domain-list{
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-}
-
-.domains{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 1em;
-    max-width: 25vw;
-}
-
 table, th, td{
     border: solid 1px black;
-    padding: 0.5em;
+    padding: 0.8em;
     border-collapse: collapse;
     margin: 1em 0 1em;
-}
-
-.price{
-    text-align: right;
-}
-
-.total{
-    text-align: right;
 }
 
 .seperator{
@@ -67,7 +45,38 @@ table, th, td{
 a, button{
     border: solid 1px black;
     border-radius: 10px;
-    background-color: rgb(202, 202, 202);
-    padding: 0.5em;
+    background-color: rgb(232, 232, 232);
+    padding: 0.3em;
     cursor: pointer;
+}
+
+.orders{
+    border: solid 0.5px black;
+    padding: 1em;
+    margin: 1em 0 1em;
+}
+
+.order-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.order-right{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.order-items{
+    width: 100%;
+}
+
+.order-item-domain{
+    width: 70vw;
+}
+
+th, td{
+    text-align: left;
 }

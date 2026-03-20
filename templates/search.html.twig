@@ -8,10 +8,21 @@
         </form>
     </section>
     <hr>
-    <section class="domain-list">
+    {% if results is not empty %}
+        <table class="domain-list">
+            <tr>
+                <th>Domain Name</th>
+                <th>Status</th>
+                <th>Price</th>
+                <th>Currencey Type</th>
+                <th>Status</th>
+            </tr>
         {% for result in results %}
-            <article class="domains">
-                <p>{{result.domain}} - {{result.status}} - {{ result.price.product.price }} {{ result.price.product.currency }}</p>
+            <tr class="domains">
+                <td>{{result.domain}}</td>
+                <td>{{result.status}}</td>
+                <td>€{{ result.price.product.price }}</td>
+                <td>{{ result.price.product.currency }}</td>
                 {% if result.status == 'free' %}
                     <form method="post">
                         <input type="hidden" value="{{result.domain}}" name="domain-name">
@@ -19,12 +30,13 @@
                         <input type="hidden" value="{{ result.price.product.price }}" name="domain-price">
                         <input type="hidden" value="{{ result.price.product.currency }}" name="domain-currency-type">
                         <input type="hidden" value="{{ name }}" name="search-term">
-                        <button type="submit" name="add-to-cart">Add to cart</button>
+                        <td><button type="submit" name="add-to-cart">Add to cart</button></td>
                     </form>
                 {% else %}
-                    <span class="in-use">Domain is in use</span>
+                    <td class="in-use">Domain is in use</td>
                 {% endif %}
-            </article>
+            </tr>
         {% endfor %}
-    </section>
+        </table>
+    {% endif %}
 {% endblock %}

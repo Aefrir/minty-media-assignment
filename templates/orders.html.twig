@@ -2,36 +2,36 @@
 {% extends "base.html.twig" %}
 {% block content %}
     {% if orders is not empty and items is not empty %}
-        <table>
+    <section >
+    {% for order in orders %}
+    <article class="orders">
+        <ul class="order-list">
+            <li>Order ID: {{order.id}}</li>
+            <div class="order-right">
+                <li>Subtotal: €{{order.subtotal}}</li> |
+                <li>VAT: €{{order.vat}}</li> |
+                <li>Total: €{{order.total}}</li>
+            </div>
+        </ul>
+        
+        <table class="order-items">
             <tr>
-                <th>Order ID</th>
-                <th>Subtotal</th>
-                <th>VAT</th>
-                <th>Total</th>
-            </tr>
-        {% for order in orders %}
-            <tr>
-                <td>{{order.id}}</td>
-                <td>{{order.subtotal}}</td>
-                <td>{{order.vat}}</td>
-                <td>{{order.total}}</td>
-            </tr>
-        {% endfor %}
-        </table>
-        <table>
-            <tr>
-                <th>Order ID</th>
                 <th>Domain Name</th>
                 <th>Price</th>
             </tr>
             {% for item in items %}
-            <tr>
-                <td>{{item.order_id}}</td>
-                <td>{{item.domain}}</td>
-                <td>{{item.price}}</td>
-            </tr>
+                {% if order.id == item.order_id %}
+                    <tr>
+                        <td class="order-item-domain">{{item.domain}}</td>
+                        <td class="order-item-price">€{{item.price}}</td>
+                    </tr>
+                {% endif %}
             {% endfor %}
         </table>
+    </article>
+    {% endfor %}
+        
+    </section>
         {% else %}
             <p>You have made no orders</p>
         {% endif %}
