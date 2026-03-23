@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2026 at 11:54 PM
+-- Generation Time: Mar 23, 2026 at 12:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `minty-media-assignment`
 --
+CREATE DATABASE IF NOT EXISTS `minty-media-assignment` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `minty-media-assignment`;
 
 -- --------------------------------------------------------
 
